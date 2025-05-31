@@ -12,6 +12,6 @@ BOOKS = [
 
 app = FastAPI()
 
-@app.get("/api-endpoint")
+@app.get("/")
 async def first_api():
     return BOOKS
