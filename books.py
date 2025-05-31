@@ -12,7 +12,7 @@ BOOKS = [
 
 app = FastAPI()
 
-@app.get("/")
+@app.get("/books")
 async def read_all_books():
     return BOOKS
 
@@ -22,3 +22,8 @@ async def read_book(book_title: str):
         if book.get('title').casefold() == book_title.casefold():
             return book
     return {"error": "Book not found"}
+
+@app.get("/books/")
+async def read_category_by_query(category: str):
+    books_to_return = [book for book in BOOKS if book.get('category').casefold() == category.casefold()]
+    return books_to_return
